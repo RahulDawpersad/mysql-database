@@ -149,11 +149,12 @@
       padding: 10px 30px;
       border-radius: 5px;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 10px;
       /* Reduced font size */
       text-decoration: none;
       color: #fff;
       margin-right: 5px;
+      width: 80px;
     }
 
     .cta:hover {
@@ -323,6 +324,12 @@
       z-index: 999;
     }
 
+    #user-info {
+      display: none;
+      /* Hide by default */
+    }
+
+
     /* User Icon */
     .user-container {
       position: relative;
@@ -422,10 +429,39 @@
       font-size: 1.5em;
       margin: 1em 0;
     }
+
+    /* Hide the desktop auth buttons on mobile */
+    .desktop-auth {
+      display: block;
+      /* Visible on large screens */
+    }
+
+    .mobile-auth {
+      display: none;
+      /* Hidden on desktops */
+    }
+
+    /* Mobile Styling */
+    @media screen and (max-width: 1024px) {
+      .desktop-auth {
+        display: none;
+        /* Hide on tablets and phones */
+      }
+
+      .mobile-auth {
+        display: flex;
+        /* Show inside the mobile menu */
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+    }
   </style>
 </head>
 
 <body>
+
+
 
 
   <header class="header" id="header">
@@ -446,14 +482,10 @@
           <li class="dropdown">
             <span class="dropdown-toggle">Services</span>
             <ul class="dropdown-menu">
-              <li><a href="programme-director.html">Programme Director & Facilitation of Strategic
-                  Workshops</a></li>
+              <li><a href="programme-director.html">Programme Director & Facilitation of Strategic Workshops</a></li>
               <li><a href="strategic-conferences.html">Strategic Conferences</a></li>
-              <li><a href="human-capital-strategies.html">Human Capital Strategies and Implementation</a>
-              </li>
+              <li><a href="human-capital-strategies.html">Human Capital Strategies and Implementation</a></li>
               <li><a href="business-process-reengineering.html">Business Process Re-engineering</a></li>
-              <!-- <li><a href="change-management.html">Change Management Services</a></li>
-              <li><a href="coaching-mentoring.html">Coaching and Mentoring</a></li> -->
             </ul>
           </li>
           <li class="dropdown">
@@ -464,17 +496,16 @@
           </li>
           <li><a href="blogs.html">Blogs</a></li>
           <li><a href="contact.html">Contact Us</a></li>
-          <!-- <li><a href="https://email-subscribe-marketing.vercel.app/" target="_blank" class="cta">Subscribe</a></li> -->
-          <!-- <li><a href="booking.html" class="cta">Book Now</a></li> -->
-          <!-- Authentication buttons (visible only when user is not logged in) -->
-          <div id="auth-buttons">
-            <button class="cta" onclick="window.location.href='/login.html'">Login</button>
-            <button class="cta" onclick="window.location.href='/register.html'">Register</button>
-          </div>
         </ul>
+
+        <!-- Authentication Buttons for Larger Screens -->
+        <div id="auth-buttons" class="desktop-auth">
+          <button class="cta" onclick="window.location.href='/login.html'">Login</button>
+          <button class="cta" onclick="window.location.href='/register.html'">Register</button>
+        </div>
       </div>
 
-      <!-- Menu for Mobile Screens -->
+      <!-- Mobile Menu -->
       <div class="mobile-menu" id="mobileMenu">
         <span class="close-btn" onclick="toggleMenu()">&times;</span>
         <ul>
@@ -484,30 +515,26 @@
           <li class="dropdown">
             <span class="dropdown-toggle">Services</span>
             <ul class="dropdown-menu">
-              <li><a href="programme-director.html">Programme Director & Facilitation of Strategic
-                  Workshops</a></li>
+              <li><a href="programme-director.html">Programme Director & Facilitation of Strategic Workshops</a></li>
               <li><a href="strategic-conferences.html">Strategic Conferences</a></li>
-              <li><a href="human-capital-strategies.html">Human Capital Strategies and Implementation</a>
-              </li>
+              <li><a href="human-capital-strategies.html">Human Capital Strategies and Implementation</a></li>
               <li><a href="business-process-reengineering.html">Business Process Re-engineering</a></li>
-              <!-- <li><a href="change-management.html">Change Management Services</a></li>
-              <li><a href="coaching-mentoring.html">Coaching and Mentoring</a></li> -->
             </ul>
           </li>
           <li class="dropdown">
             <span class="dropdown-toggle">Conferences</span>
             <ul class="dropdown-menu">
-              <li><a href="conference-calendar.html">Conference Calendar</a></li>
+              <li><a href="calendar.html">Conference Calendar</a></li>
             </ul>
           </li>
           <li><a href="blogs.html">Blogs</a></li>
           <li><a href="contact.html">Contact Us</a></li>
-          <!-- <li><a href="subscribe.html" class="cta">Subscribe</a></li> -->
-          <!-- Authentication buttons (visible only when user is not logged in) -->
-          <!-- <div id="auth-buttons">
-            <button onclick="window.location.href='/login.html'">Login</button>
-            <button onclick="window.location.href='/register.html'">Register</button>
-          </div> -->
+
+          <!-- Authentication Buttons for Mobile Menu -->
+          <div id="auth-buttons" class="mobile-auth">
+            <button class="cta" onclick="window.location.href='/login.html'">Login</button>
+            <button class="cta" onclick="window.location.href='/register.html'">Register</button>
+          </div>
         </ul>
       </div>
       <!-- User Icon & Dropdown -->
@@ -520,6 +547,7 @@
       </div>
     </nav>
   </header>
+
 
 
   <!-- Swiper/Carousel Start -->
