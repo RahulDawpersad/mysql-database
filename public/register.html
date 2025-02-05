@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IGHCS | SIGN UP</title>
+  <script src="https://kit.fontawesome.com/655b3b7e45.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f4f7fc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    input[type=password],
+    input[type=text] {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: block;
+      font-size: 18px;
+      margin: 5px 0px 10px;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .show-password {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .show-password input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
+    .show-password label {
+      font-size: 0.8em;
+      margin: 5px 0;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin: 1em 0;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    button:enabled {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .message {
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .error {
+      background-color: tomato;
+    }
+
+    .success {
+      background-color: green;
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 150px;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 15px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      button {
+        padding: 10px;
+        font-size: 14px;
+      }
+    }
+
+
+    .password-rules {
+      margin-top: 10px;
+      font-size: 14px;
+      list-style: none;
+      padding: 0;
+      display: none;
+    }
+
+    .password-rules li {
+      color: #666;
+      display: flex;
+      align-items: center;
+    }
+
+    .password-rules li.valid {
+      color: green;
+      text-decoration: line-through;
+    }
+
+    .password-rules li::before {
+      content: "❌";
+      margin-right: 8px;
+      color: red;
+    }
+
+    .password-rules li.valid::before {
+      content: "✔️";
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img src="/assets/image/IGHCS_LOGO_2-removebg-Transparent.png" alt="Logo" class="logo">
+
+    <h2>Sign Up</h2>
+    <form action="/register" method="POST" id="registerForm">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <ul class="password-rules" id="passwordRules">
+        <li id="length">At least 8 characters</li>
+        <li id="letter">At least one letter</li>
+        <li id="number">At least one number</li>
+        <li id="special">At least one special character (!@#$%^&*)</li>
+      </ul>
+
+      <div class="show-password">
+        <input type="checkbox" class="showPassword" id="showPassword">
+        <label for="showPassword" class="showText">Show password</label>
+      </div>
+
+      <button type="submit" disabled>Sign Up</button>
+      <p>Already have an Account? <a href="/login.html">Login</a></p>
+    </form>
+
+    <div id="message-container"></div>
+  </div>
+
+  <script>
+    const messageContainer = document.getElementById('message-container');
+    const usernameInput = document.getElementById('username');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const passwordRules = document.getElementById('passwordRules');
+    const registerForm = document.getElementById('registerForm');
+    const submitButton = document.querySelector('button[type="submit"]');
+
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+    const rules = {
+      length: document.getElementById('length'),
+      letter: document.getElementById('letter'),
+      number: document.getElementById('number'),
+      special: document.getElementById('special')
+    };
+
+    let isEmailValid = false;
+    let isPasswordValid = false;
+    let isUsernameValid = false;
+
+    emailInput.addEventListener('input', validateEmail);
+    passwordInput.addEventListener('input', validatePassword);
+    usernameInput.addEventListener('input', validateUsername);
+
+    function validateEmail() {
+      const emailValue = emailInput.value;
+      clearPreviousMessages('email');
+
+      if (!emailPattern.test(emailValue)) {
+        showMessage('Invalid email format', 'error', 'email');
+        isEmailValid = false;
+      } else {
+        showMessage('Valid email', 'success', 'email');
+        isEmailValid = true;
+      }
+
+      enableSubmitButton();
+    }
+
+    function validatePassword() {
+      const password = passwordInput.value;
+      let isValid = true;
+
+      if (password.length >= 8) {
+        rules.length.classList.add('valid');
+      } else {
+        rules.length.classList.remove('valid');
+        isValid = false;
+      }
+
+      if (/[A-Za-z]/.test(password)) {
+        rules.letter.classList.add('valid');
+      } else {
+        rules.letter.classList.remove('valid');
+        isValid = false;
+      }
+
+      if (/\d/.test(password)) {
+        rules.number.classList.add('valid');
+      } else {
+        rules.number.classList.remove('valid');
+        isValid = false;
+      }
+
+      if (/[!@#$%^&*]/.test(password)) {
+        rules.special.classList.add('valid');
+      } else {
+        rules.special.classList.remove('valid');
+        isValid = false;
+      }
+
+      isPasswordValid = isValid;
+      enableSubmitButton();
+    }
+
+    function validateUsername() {
+      isUsernameValid = usernameInput.value.trim().length > 0;
+      enableSubmitButton();
+    }
+
+    passwordInput.addEventListener('input', () => {
+      passwordRules.style.display = passwordInput.value.length > 0 ? 'block' : 'none';
+      validatePassword();
+    });
+
+    function showMessage(message, type, field) {
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('message', type);
+      messageDiv.textContent = message;
+
+      if (field === 'email') {
+        messageContainer.appendChild(messageDiv);
+      } else if (field === 'password') {
+        passwordInput.parentElement.appendChild(messageDiv);
+      }
+    }
+
+    function clearPreviousMessages(field) {
+      if (field === 'email') {
+        messageContainer.innerHTML = '';
+      } else if (field === 'password') {
+        passwordInput.parentElement.querySelectorAll('.message').forEach(msg => msg.remove());
+      }
+    }
+
+    function enableSubmitButton() {
+      submitButton.disabled = !(isUsernameValid && isEmailValid && isPasswordValid);
+    }
+
+    // Show password toggle
+    document.getElementById('showPassword').onclick = function () {
+      document.getElementById('password').type = this.checked ? "text" : "password";
+    };
+
+    // Function to get query parameters from the URL
+    function getQueryParam(param) {
+      return new URLSearchParams(window.location.search).get(param);
+    }
+
+    // Display error message if it exists in the URL
+    window.onload = function () {
+      const errorMessage = getQueryParam('error');
+      if (errorMessage) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', 'error');
+        messageDiv.textContent = errorMessage;
+        messageContainer.appendChild(messageDiv);
+      }
+    };
+
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+</head>
+<body>
+  <h2>User Registration</h2>
+  <form action="/register" method="POST">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <button type="submit">Register</button>
+  </form>
+</script>
+</body>
+</html> -->
