@@ -25,7 +25,7 @@ document.getElementById("subscribeForm").addEventListener("submit", async functi
             message.innerHTML = `<img src="assets/image/valid_icon2.png" alt="Icon" style="width: 30px; height: 30px;"> <p class="subscribe-success-message">You have successfully subscribed to IGHCS, check your emails after 1 minute</p>`;
             emailInput.value = "";  // **Clears the input field**
         } else {
-            throw new Error(result.message || "Subscription failed. Try again!");
+            throw new Error(result.message || "Unable to create contact, Email is already associated with another Contact.!");
         }
     } catch (error) {
         message.innerHTML = `<img src="assets/image/error-validation.png" alt="Icon" style="width: 30px; height: 30px;"><p class="subscribe-error-message">${error.message}</p>`;
