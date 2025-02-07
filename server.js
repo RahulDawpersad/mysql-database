@@ -6,10 +6,9 @@ const path = require("path");
 const bcrypt = require('bcryptjs');
 const axios = require("axios");
 const { Pool } = require('pg');
-const mysql = require('mysql');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000; // Use .env PORT or fallback to 3000
 app.use(cors());
 
 // Middleware
@@ -141,10 +140,10 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server
+// Start the server
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });
-
 
 
 
