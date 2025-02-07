@@ -115,7 +115,7 @@ app.post("/subscribe", async (req, res) => {
         res.json({ message: "Subscription successful! Check your email." });
     } catch (error) {
         console.error("Error subscribing user:", error.response?.data || error.message);
-        res.status(400).json({ message: "Subscription failed. Try again!" });
+        res.status(400).json({ message: "Unable to create contact, email is already associated with another Contact"});
     }
 });
 
