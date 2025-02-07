@@ -8,7 +8,6 @@ const axios = require("axios");
 const { Pool } = require('pg');
 const mysql = require('mysql');
 
-
 const app = express();
 const port = 3000;
 app.use(cors());
