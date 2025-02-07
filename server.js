@@ -23,26 +23,26 @@ const LIST_ID = process.env.LIST_ID;
 const WELCOME_TEMPLATE_ID = process.env.WELCOME_TEMPLATE_ID;
 
 // PostgreSQL Connection
-const pool = new Pool({
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    database: process.env.DB_NAME,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    ssl: { rejectUnauthorized: false },
-    connectionTimeoutMillis: 30000, // 30 seconds
-    idleTimeoutMillis: 30000, // 30 seconds
-    max: 10, // Limit the number of connections
-});
-
 // const pool = new Pool({
 //     host: process.env.DB_HOST,
 //     port: process.env.DB_PORT,
 //     database: process.env.DB_NAME,
 //     user: process.env.DB_USER,
 //     password: process.env.DB_PASSWORD,
-//     ssl: { rejectUnauthorized: false }
+//     ssl: { rejectUnauthorized: false },
+//     connectionTimeoutMillis: 30000, // 30 seconds
+//     idleTimeoutMillis: 30000, // 30 seconds
+//     max: 10, // Limit the number of connections
 // });
+
+const pool = new Pool({
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    ssl: { rejectUnauthorized: false }
+});
 
 
 // Serve the landing page (index.html)
