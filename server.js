@@ -29,22 +29,21 @@ const pool = new Pool({
     database: process.env.DB_NAME,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    ssl: { rejectUnauthorized: false }
+    ssl: { rejectUnauthorized: false },
+    connectionTimeoutMillis: 30000, // 30 seconds
+    idleTimeoutMillis: 30000, // 30 seconds
+    max: 10, // Limit the number of connections
 });
-// const db = mysql.createPool({
-//     connectionLimit: 10, // Set the connection limit as needed
+
+// const pool = new Pool({
 //     host: process.env.DB_HOST,
+//     port: process.env.DB_PORT,
+//     database: process.env.DB_NAME,
 //     user: process.env.DB_USER,
-//     password: process.env.DB_PASS,
-//     database: process.env.DB_NAME
+//     password: process.env.DB_PASSWORD,
+//     ssl: { rejectUnauthorized: false }
 // });
 
-// Test the connection
-// db.getConnection((err, connection) => {
-//     if (err) throw err;
-//     console.log('Connected to Clever Cloud MySQL');
-//     connection.release(); // Always release the connection after using it
-// });
 
 // Serve the landing page (index.html)
 app.get("/", (req, res) => {
