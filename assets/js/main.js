@@ -13,7 +13,7 @@ document.getElementById("subscribeForm").addEventListener("submit", async functi
     message.textContent = "⏳ Processing your subscription... Please wait.";
 
     try {
-        const response = await fetch("https://mysql-database-w8hh.onrender.com/subscribe", {  // <-- USE YOUR BACKEND URL
+        const response = await fetch("https://ighcs-test-with-database.onrender.com/subscribe", {  // <-- USE YOUR BACKEND URL
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: userEmail }),
