@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  <style>
+    body {
+      background: #001b64;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Style for the navigation buttons */
+    #auth-buttons, #user-info {
+      margin-bottom: 20px;
+    }
+
+    #auth-buttons a {
+      margin-right: 15px;
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Logout button styling */
+    #user-info button {
+      margin-top: 10px;
+    }
+
+    /* Always show About and Services links */
+    .nav-links {
+      margin-bottom: 20px;
+    }
+    .nav-links a {
+      color: white;
+      margin-right: 15px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Our Website</h1>
+
+  <!-- Check if user is logged in -->
+  <div id="user-info">
+    <!-- Dynamically inserted user name and logout button -->
+  </div>
+
+  <!-- Always visible navigation links -->
+  <div class="nav-links">
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+  </div>
+
+  <!-- Authentication buttons visible only when the user is not logged in -->
+  <div id="auth-buttons">
+    <button onclick="window.location.href='/login.html'">Login</button>
+    <button onclick="window.location.href='/register.html'">Register</button>
+  </div>
+
+  <script>
+  // Fetch user information from sessionStorage
+  window.onload = function() {
+    const user = sessionStorage.getItem('username');
+    const authButtons = document.getElementById('auth-buttons');
+    const userInfo = document.getElementById('user-info');
+
+    if (user) {
+      // Display the user info and logout button
+      userInfo.innerHTML = `<h3>Hello, ${user}</h3><button onclick="logout()">Logout</button>`;
+
+      // Hide the authentication buttons (Login/Register)
+      authButtons.style.display = 'none';
+    }
+  }
+
+  function logout() {
+    sessionStorage.removeItem('username');
+    window.location.href = '/';  // Redirect to the homepage
+  }
+  </script>
+</body>
+</html>
