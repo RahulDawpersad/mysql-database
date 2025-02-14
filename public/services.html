@@ -1,5 +1,6 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +13,9 @@
       margin: 0;
       padding: 0;
     }
-    h1, p {
+
+    h1,
+    p {
       text-align: center;
     }
 
@@ -24,10 +27,12 @@
       justify-content: space-between;
       align-items: center;
     }
+
     .nav-links {
       display: flex;
       gap: 15px;
     }
+
     .nav-links a {
       color: white;
       text-decoration: none;
@@ -35,6 +40,7 @@
       padding: 8px 12px;
       display: inline-block;
     }
+
     .nav-links a:hover {
       background: #555;
       border-radius: 5px;
@@ -46,6 +52,7 @@
       gap: 10px;
       align-items: center;
     }
+
     .auth-section button {
       background: #007BFF;
       color: white;
@@ -55,6 +62,7 @@
       border-radius: 5px;
       font-size: 16px;
     }
+
     .auth-section button:hover {
       background: #0056b3;
     }
@@ -62,14 +70,17 @@
     /* User icon and dropdown styling */
     .user-menu {
       position: relative;
-      display: none; /* Hidden by default, shown when logged in */
+      display: none;
+      /* Hidden by default, shown when logged in */
     }
+
     .user-icon {
       color: white;
       font-size: 22px;
       cursor: pointer;
       padding: 10px;
     }
+
     .dropdown {
       display: none;
       position: absolute;
@@ -80,13 +91,16 @@
       border-radius: 5px;
       overflow: hidden;
     }
+
     .dropdown.show {
       display: block;
     }
+
     .dropdown p {
       margin: 10px;
       font-size: 16px;
     }
+
     .dropdown button {
       width: 100%;
       padding: 10px;
@@ -96,11 +110,80 @@
       cursor: pointer;
       text-align: center;
     }
+
     .dropdown button:hover {
       background: #0056b3;
     }
+
+
+
+
+    .services-section {
+      padding: 50px 0;
+      background-color: #fff;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 36px;
+      color: #1a73e8;
+      margin-bottom: 20px;
+    }
+
+    .intro-text {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .service {
+      width: 30%;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .service h3 {
+      font-size: 22px;
+      color: #1a73e8;
+      margin-bottom: 15px;
+    }
+
+    .service p {
+      font-size: 16px;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .service {
+        width: 48%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .service {
+        width: 100%;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <!-- Navigation Bar -->
@@ -126,12 +209,62 @@
     </div>
   </div>
 
-  <h1>Our Services</h1>
-  <p>We offer a variety of services including web development, graphic design, and much more. Explore our range of offerings designed to meet your needs.</p>
+  <section class="services-section">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <p class="intro-text">At IGHCS, we provide expert management and facilitation services that ensure the successful
+        execution of your organization's strategic initiatives. Our approach is comprehensive, focusing on delivering
+        impactful results through effective leadership, communication, and innovation.</p>
+
+      <div class="services">
+        <div class="service">
+          <h3>Programme Director &amp; Facilitation of Strategic Workshops</h3>
+          <p>We specialize in overseeing and directing specific programmes and initiatives, ensuring alignment with your
+            organization's vision and objectives. Our services are tailored to drive success across various sectors,
+            empowering your team and business for long-term growth.</p>
+        </div>
+
+        <div class="service">
+          <h3>Strategic Planning</h3>
+          <p>We work closely with your leadership team to develop and implement actionable strategic plans. Our
+            expertise in setting clear goals and measurable outcomes helps organizations achieve their vision and thrive
+            in competitive markets.</p>
+        </div>
+
+        <div class="service">
+          <h3>Programme Management</h3>
+          <p>Our programme management services are designed to optimize the efficiency and effectiveness of your
+            operations. From resource allocation to budgeting, we ensure all aspects of your programme are executed
+            seamlessly, aligning with your human capital strategy.</p>
+        </div>
+
+        <div class="service">
+          <h3>Stakeholder Management</h3>
+          <p>Effective communication with stakeholders is key to programme success. We manage relationships with team
+            members, sponsors, and external partners, ensuring a unified vision and clear communication throughout the
+            programme lifecycle.</p>
+        </div>
+
+        <div class="service">
+          <h3>Change Management</h3>
+          <p>We lead and manage change initiatives with a structured approach, guiding your organization through
+            transformations and ensuring that new processes and systems are successfully integrated. Our goal is to
+            minimize disruption and maximize long-term impact.</p>
+        </div>
+
+        <div class="service">
+          <h3>Monitoring and Evaluation</h3>
+          <p>Our services extend beyond implementation, with continuous monitoring and evaluation of programme progress.
+            We identify areas of improvement and provide insights to refine strategies, ensuring your programme
+            consistently meets its objectives and delivers value.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script>
     // Load user session and show correct UI
-    window.onload = function() {
+    window.onload = function () {
       const user = sessionStorage.getItem('username');
       if (user) {
         document.getElementById('auth-section').style.display = "none"; // Hide Login/Register
@@ -153,7 +286,7 @@
     }
 
     // Close dropdown when clicking outside
-    window.onclick = function(event) {
+    window.onclick = function (event) {
       if (!event.target.matches('.user-icon')) {
         let dropdown = document.getElementById("dropdown-menu");
         if (dropdown.classList.contains("show")) {
@@ -164,4 +297,5 @@
   </script>
 
 </body>
+
 </html>

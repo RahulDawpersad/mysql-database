@@ -144,23 +144,21 @@
       color: #007BFF;
     }
 
-    .cta {
+    /* .cta {
       background-color: #1E90FF;
-      padding: 10px 30px;
       border-radius: 5px;
       font-weight: bold;
       font-size: 10px;
-      /* Reduced font size */
       text-decoration: none;
       color: #fff;
       margin-right: 5px;
       width: 80px;
-    }
+    } */
 
-    .cta:hover {
+    /* .cta:hover {
       color: #1E90FF;
       background-color: #0059ff;
-    }
+    } */
 
     .hamburger {
       display: none;
@@ -212,7 +210,7 @@
     }
 
     .mobile-menu .cta {
-      display: block;
+      display: flex;
       margin: 10px 0;
       text-align: center;
     }
@@ -314,9 +312,19 @@
       margin-bottom: 20px;
     } */
 
-    #auth-buttons button {
+    #mobile-auth-buttons .cta {
       background: #1E90FF;
-      color: white;
+      color: rgb(255, 255, 255);
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      z-index: 999;
+    }
+
+    #desktop-auth-buttons .cta {
+      background: #1E90FF;
+      color: rgb(255, 255, 255);
       border: none;
       padding: 10px 15px;
       cursor: pointer;
@@ -326,12 +334,10 @@
 
     #user-info {
       display: none;
-      /* Hide by default */
     }
 
 
-    /* User Icon */
-    .user-container {
+    /* .user-container {
       position: relative;
       display: inline-block;
       cursor: pointer;
@@ -339,13 +345,11 @@
 
     .user-icon {
       font-size: 24px;
-      /* background: white; */
       color: #ffffff;
       padding: 10px;
       border-radius: 50%;
     }
 
-    /* Dropdown Menu */
     .user-dropdown {
       position: absolute;
       top: 40px;
@@ -373,12 +377,12 @@
       border-radius: 5px;
       margin-top: 10px;
       width: 100%;
-    }
+    } */
 
     /* Show Dropdown */
-    .show {
+    /* .show {
       display: block;
-    }
+    } */
 
     #about h1 {
       font-size: 1.5em;
@@ -450,11 +454,152 @@
 
       .mobile-auth {
         display: flex;
-        /* Show inside the mobile menu */
-        flex-direction: column;
         gap: 10px;
-        margin-top: 10px;
+        align-items: center;
       }
+    }
+
+
+
+
+
+
+
+
+
+    /* User Container */
+    .user-container {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    /* User Icon */
+    .user-icon {
+      font-size: 24px;
+      color: #333;
+      padding: 10px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+    }
+
+    .user-icon:hover {
+      background: #ddd;
+    }
+
+    /* Dropdown */
+    .user-dropdown {
+      display: none;
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background: #fff;
+      width: 200px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      transform: translateY(-10px);
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Show dropdown */
+    .show {
+      display: block;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Dropdown Header */
+    .dropdown-header {
+      text-align: center;
+      padding: 15px;
+      background: #007bff;
+      color: #fff;
+    }
+
+    .profile-icon {
+      font-size: 40px;
+      margin-bottom: 5px;
+    }
+
+    /* Logout Button */
+    .logout-btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      /* background: #ff4d4d; */
+      background: linear-gradient(to right, crimson, blue);
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .logout-btn:hover {
+      background: linear-gradient(to right, crimson, blue);
+    }
+
+    #username-display {
+      color: #fffcfc;
+    }
+
+    /* Business Partner Styling */
+    .bs-section {
+      background: #ffffff;
+      display: grid;
+      place-items: center;
+    }
+
+    .bs-heading {
+      color: #003366;
+      text-align: center;
+      font-size: 1.8em;
+      padding: 20px;
+      margin: 20px 0px;
+    }
+
+    .main-slider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 80%;
+      overflow: hidden;
+      background: rgb(255, 255, 255);
+      border-radius: 16px;
+      /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+      /* backdrop-filter: blur(7.4px); */
+      /* -webkit-backdrop-filter: blur(7.4px); */
+      /* border: 1px solid rgba(255, 255, 255, 0.4); */
+    }
+
+    .main-slider-items {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      animation: scrolling 20s linear infinite;
+
+    }
+
+    @keyframes scrolling {
+
+      0% {
+        transform: translateX(80%);
+      }
+
+      100% {
+        transform: translateX(-20%);
+      }
+    }
+
+    .main-slider-items img {
+      width: 12%;
+      margin: 20px;
+
     }
   </style>
 </head>
@@ -478,13 +623,14 @@
         <ul class="menu">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About Us</a></li>
+          <li><a href="#bspartner">Business Partners</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
           <li class="dropdown">
             <span class="dropdown-toggle">Services</span>
             <ul class="dropdown-menu">
-              <li><a href="programme-director.html">Programme Director & Facilitation of Strategic Workshops</a></li>
-              <li><a href="strategic-conferences.html">Strategic Conferences</a></li>
-              <li><a href="human-capital-strategies.html">Human Capital Strategies and Implementation</a></li>
+              <li><a href="programmedirector.html">Programme Director & Facilitation of Strategic Workshops</a></li>
+              <li><a href="strategiconference.html">Strategic Conferences</a></li>
+              <li><a href="humancapitalstrategies.html">Human Capital Strategies and Implementation</a></li>
               <li><a href="business-process-reengineering.html">Business Process Re-engineering</a></li>
             </ul>
           </li>
@@ -494,12 +640,12 @@
               <li><a href="calendar.html">Conference Calendar</a></li>
             </ul>
           </li>
-          <li><a href="blogs.html">Blogs</a></li>
+          <!-- <li><a href="blogs.html">Blogs</a></li> -->
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
 
         <!-- Authentication Buttons for Larger Screens -->
-        <div id="auth-buttons" class="desktop-auth">
+        <div id="desktop-auth-buttons" class="desktop-auth">
           <button class="cta" onclick="window.location.href='/login.html'">Login</button>
           <button class="cta" onclick="window.location.href='/register.html'">Register</button>
         </div>
@@ -511,13 +657,14 @@
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About Us</a></li>
+          <li><a href="#bspartner">Business Partners</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
           <li class="dropdown">
             <span class="dropdown-toggle">Services</span>
             <ul class="dropdown-menu">
-              <li><a href="programme-director.html">Programme Director & Facilitation of Strategic Workshops</a></li>
-              <li><a href="strategic-conferences.html">Strategic Conferences</a></li>
-              <li><a href="human-capital-strategies.html">Human Capital Strategies and Implementation</a></li>
+              <li><a href="programmedirector.html">Programme Director & Facilitation of Strategic Workshops</a></li>
+              <li><a href="strategiconference.html">Strategic Conferences</a></li>
+              <li><a href="humancapitalstrategies.html">Human Capital Strategies and Implementation</a></li>
               <li><a href="business-process-reengineering.html">Business Process Re-engineering</a></li>
             </ul>
           </li>
@@ -527,24 +674,34 @@
               <li><a href="calendar.html">Conference Calendar</a></li>
             </ul>
           </li>
-          <li><a href="blogs.html">Blogs</a></li>
+          <!-- <li><a href="blogs.html">Blogs</a></li> -->
           <li><a href="contact.html">Contact Us</a></li>
-
-          <!-- Authentication Buttons for Mobile Menu -->
-          <div id="auth-buttons" class="mobile-auth">
-            <button class="cta" onclick="window.location.href='/login.html'">Login</button>
-            <button class="cta" onclick="window.location.href='/register.html'">Register</button>
-          </div>
         </ul>
+
+
+        <!-- Authentication Buttons for Mobile Menu -->
+        <div id="mobile-auth-buttons" class="mobile-auth">
+          <button class="cta" onclick="window.location.href='/login.html'">Login</button>
+          <button class="cta" onclick="window.location.href='/register.html'">Register</button>
+        </div>
+
       </div>
+
+
       <!-- User Icon & Dropdown -->
       <div id="user-info" class="user-container">
-        <i class="fa-solid fa-user user-icon"></i>
-        <div class="user-dropdown">
-          <h3 id="username-display"></h3>
-          <button onclick="logout()">Logout</button>
+        <i class="fa-solid fa-user user-icon" onclick="toggleDropdown()"></i>
+        <div class="user-dropdown" id="userDropdown">
+          <div class="dropdown-header">
+            <i class="fa-solid fa-user-circle profile-icon"></i>
+            <h3 id="username-display"></h3>
+          </div>
+          <button class="logout-btn" onclick="logout()">Logout</button>
         </div>
       </div>
+
+
+
     </nav>
   </header>
 
@@ -919,6 +1076,66 @@
   </div>
   <!-- End of Get Event Updates -->
 
+
+
+
+
+  <!-- Business Partners Section -->
+  <section class="container-fluid bs-section py-5" id="bspartner">
+    <div class="col-md-6">
+      <h1 class="bs-heading">Our Business Partners</h1>
+    </div>
+    <div class="main-slider">
+      <div class="main-slider-items">
+        <img src="ukzn_orig (1).png" alt="">
+        <img src="/assets/image/designx.png" alt="">
+        <img src="/assets/image/Unisa-Logo.png" alt="">
+        <img src="/assets/image/varsity_logo.png" alt="">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/37/Jumpman_logo.svg/1200px-Jumpman_logo.svg.png"
+          alt="">
+        <img src="https://www.svgrepo.com/show/303123/bmw-logo.svg" alt="">
+        <img
+          src="https://brandlogos.net/wp-content/uploads/2014/12/starbucks_coffee_company-logo_brandlogos.net_9jqys.png"
+          alt="">
+        <img src="https://www.zarla.com/images/nike-logo-2400x2400-20220504.png?crop=1:1,smart&width=150&dpr=2" alt="">
+        <img src="https://www.zarla.com/images/apple-logo-2400x2400-20220512-1.png?crop=1:1,smart&width=150&dpr=2"
+          alt="">
+        <img src="https://www.zarla.com/images/disney-logo-2400x2400-20220513-2.png?crop=1:1,smart&width=150&dpr=2"
+          alt="">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4d/Loon_%28company%29_logo.svg/800px-Loon_%28company%29_logo.svg.png"
+          alt="">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/37/Jumpman_logo.svg/1200px-Jumpman_logo.svg.png"
+          alt="">
+        <img src="https://www.svgrepo.com/show/303123/bmw-logo.svg" alt="">
+        <img
+          src="https://brandlogos.net/wp-content/uploads/2014/12/starbucks_coffee_company-logo_brandlogos.net_9jqys.png"
+          alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- End of Business Partners Section -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!-- Testimonials Section -->
   <div class="testimonial-section" id="testimonials">
     <div class="col-md-6 text-center">
@@ -981,7 +1198,7 @@
               <div class="cta-text">
                 <h4>Call us</h4>
                 <span>Juggie Moodley: +27 84 956 2500</span> <br>
-                <span>Natasha Dadoo: +27 74 028 6936</span>
+                <!-- <span>Natasha Dadoo: +27 74 028 6936</span> -->
               </div>
             </div>
           </div>
@@ -1095,6 +1312,7 @@
 
 
   <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/darkmode.js" defer></script>
   <script src="/assets/js/carousel.js"></script>
   <script src="/assets/js/subscribe.js"></script>
   <script src="/assets/js/testimonial.js"></script>
@@ -1112,7 +1330,9 @@
         // Show user icon and dropdown, hide auth buttons
         usernameDisplay.innerText = user;
         userInfo.style.display = 'inline-block';
-        authButtons.style.display = 'none';
+        document.getElementById("desktop-auth-buttons").style.display = "none";
+        document.getElementById("mobile-auth-buttons").style.display = "none";
+        // authButtons.style.display = 'none';
       } else {
         // Hide user icon if not logged in
         userInfo.style.display = 'none';
@@ -1120,9 +1340,9 @@
     };
 
     // Toggle dropdown menu
-    document.querySelector('.user-icon').addEventListener('click', function () {
-      document.querySelector('.user-dropdown').classList.toggle('show');
-    });
+    // document.querySelector('.user-icon').addEventListener('click', function () {
+    //   document.querySelector('.user-dropdown').classList.toggle('show');
+    // });
 
     // Logout function
     function logout() {
@@ -1138,7 +1358,6 @@
     });
 
     // Close menu on window resize if menu is open
-
     function toggleMenu() {
       const mobileMenu = document.getElementById('mobileMenu');
       mobileMenu.classList.toggle('open');
@@ -1160,6 +1379,19 @@
     backToTopBtn.onclick = function () {
       window.scrollTo({ top: 0, behavior: "smooth" });
     };
+
+    function toggleDropdown() {
+      document.getElementById("userDropdown").classList.toggle("show");
+    }
+    // Close dropdown when clicking outside
+    window.onclick = function (event) {
+      if (!event.target.matches('.user-icon')) {
+        let dropdown = document.getElementById("userDropdown");
+        if (dropdown.classList.contains("show")) {
+          dropdown.classList.remove("show");
+        }
+      }
+    }
 
   </script>
 </body>

@@ -63,6 +63,7 @@ body {
 body {
   font-family: "Poppins", sans-serif;
   background: #f4f7fe;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .container {

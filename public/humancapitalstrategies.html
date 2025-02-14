@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Conferences | Services</title>
+    <script src="https://kit.fontawesome.com/655b3b7e45.js" crossorigin="anonymous"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Pacifico&family=Allura&family=Sacramento&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Lobster&family=Parisienne&family=Satisfy&family=Zilla+Slab&display=swap"
+        rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Poppins:500,700&display=swap" as="style">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #ffffff;
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--body-color);
+            box-shadow: 0 2px 16px hsla(230, 75%, 32%, 0.15);
+            z-index: 100;
+        }
+
+
+
+
+
+        nav {
+            background-color: #003366;
+            color: #fff;
+            font-family: "Poppins", sans-serif;
+            position: relative;
+            z-index: 10;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            padding: 0px 10px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .navbar .menu {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .logo img {
+            width: 300px;
+            height: auto;
+            max-height: 300px;
+            position: relative;
+            margin-top: 30px;
+        }
+
+        .menu li {
+            position: relative;
+        }
+
+        .menu li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 14px;
+            /* Reduced font size */
+            padding: 10px 20px;
+            display: inline-block;
+        }
+
+        .menu li a:hover {
+            color: #b9b9b9;
+        }
+
+        .service-dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+            font-size: 14px;
+            padding: 10px;
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .service-dropdown:hover .service-dropdown-menu,
+        .dropdown-toggle:hover+.service-dropdown-menu {
+            display: block;
+        }
+
+
+        .service-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            list-style: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            width: 300px;
+            /* Set a wider width for the dropdown */
+        }
+
+        .service-dropdown-menu li {
+            margin: 0;
+        }
+
+        .service-dropdown-menu li a {
+            display: block;
+            padding: 8px 12px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .service-dropdown-menu li a:hover {
+            background-color: #fff;
+            color: #007BFF;
+        }
+
+        .cta {
+            background-color: #1E90FF;
+            padding: 10px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 10px;
+            /* Reduced font size */
+            text-decoration: none;
+            color: #fff;
+            margin-right: 5px;
+            width: 80px;
+        }
+
+        .cta:hover {
+            color: #1E90FF;
+            background-color: #0059ff;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+            margin-left: auto;
+        }
+
+        .hamburger div {
+            background-color: #fff;
+            height: 3px;
+            width: 25px;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background-color: #003366;
+            box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            padding: 20px;
+            transition: right 0.3s ease-in-out;
+            z-index: 20;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            width: 100%;
+            padding: 0;
+        }
+
+        .mobile-menu li {
+            margin: 15px 0;
+        }
+
+        .mobile-menu .service-dropdown-menu {
+            position: static;
+            padding-left: 15px;
+        }
+
+        .mobile-menu .service-dropdown:hover .service-dropdown-menu {
+            display: block;
+        }
+
+        .mobile-menu .cta {
+            display: block;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .close-btn {
+            align-self: flex-end;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .mobile-menu a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .mobile-menu a:hover {
+            color: #b9b9b9;
+        }
+
+
+        /* Hide the plus icon by default */
+        .plus-icon {
+            display: none;
+            margin-left: 5px;
+            font-size: 18px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1240px) {
+            .service-dropdown span {
+                font-size: 15px;
+                font-family: "Poppins", sans-serif;
+                padding: 0 0;
+            }
+
+            .menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-right: 2em;
+            }
+
+            .mobile-menu.open {
+                right: 0;
+            }
+
+            .menu li {
+                display: none;
+            }
+
+            .logo {
+                margin-right: 2em;
+            }
+
+            .navbar {
+                justify-content: flex-start;
+            }
+
+            .logo img {
+                margin-top: 30px;
+                width: 200px;
+                height: 200px;
+
+            }
+
+            .service-dropdown-menu {
+                /* min-width: 230px; */
+                display: none;
+            }
+
+            .dropdown-open .service-dropdown-menu {
+                display: block;
+            }
+
+            /* For smaller screens */
+            .menu li a {
+                font-size: 12px;
+                /* Smaller font size for mobile screens */
+            }
+
+            .service-dropdown-menu li a {
+                font-size: 12px;
+                /* Smaller font size for mobile dropdown */
+            }
+
+            .cta {
+                font-size: 12px;
+                /* Smaller font size for buttons on mobile */
+            }
+        }
+
+
+        /* Auth Buttons */
+        /* #auth-buttons {
+margin-bottom: 20px;
+} */
+
+        #auth-buttons button {
+            background: #1E90FF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 999;
+        }
+
+        #user-info {
+            display: none;
+        }
+
+        /* Services list styling */
+        .services-section {
+            padding: 60px 0;
+            background: #F4F7FE;
+        }
+
+        .services-section .section-title {
+            font-family: 'Lobster', cursive;
+            color: #0059ff;
+            font-size: 36px;
+            font-weight: normal;
+            margin-bottom: 30px;
+        }
+
+        .services-section .intro-text {
+            font-size: 1em;
+            margin-bottom: 50px;
+            color: #424242;
+        }
+
+        .service-item {
+            background-color: #f8f9fa;
+            padding: 30px;
+            height: 90%;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .service-item h3 {
+            color: #0059ff;
+            font-size: 1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .service-item p {
+            text-align: left;
+            font-size: 0.9em;
+            color: #424242;
+        }
+
+        @media (max-width: 767px) {
+            .service-item {
+                margin-bottom: 20px;
+            }
+        }
+
+        .about-us {
+            background: #ffffff;
+            padding: 200px 0;
+            min-height: 600px;
+        }
+
+        .about-us .pic {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 1024px) {
+            .about-us .pic {
+                margin-top: 2em;
+            }
+
+        }
+
+        .about-us .text {
+            padding-left: 30px;
+        }
+
+        .about-us .text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .about-us .text h5 {
+            font-size: 20px;
+            color: #777;
+        }
+
+        .about-us .text p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .about-us .hire {
+            margin-top: 20px;
+            padding: 10px 20px;
+        }
+
+        @media (max-width: 991px) {
+            .about-us .text {
+                padding-left: 0;
+            }
+
+            .about-us .text h2 {
+                font-size: 30px;
+            }
+
+            .about-us .text h5 {
+                font-size: 18px;
+            }
+
+            .about-us .text p {
+                font-size: 15px;
+            }
+        }
+
+
+
+        /* User Auth Section */
+        .auth-section {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .auth-section button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .auth-section button:hover {
+            background: #0056b3;
+        }
+
+        /* User Icon */
+        .user-icon {
+            font-size: 1.7em;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 50%;
+            /* background: #000; */
+            /* background: #ffffff; */
+            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        /* .user-icon:hover {
+            background: #ddd;
+        } */
+
+        #username-display {
+            color: #ffffff;
+        }
+
+
+        /* Dropdown Header */
+        .dropdown-header {
+            text-align: center;
+            padding: 15px;
+            background: #007bff;
+            color: #fff;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: white;
+            min-width: 150px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .dropdown.show {
+            display: block;
+        }
+
+        .dropdown p {
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        /*         
+        .dropdown button:hover {
+            background: #0056b3;
+        } */
+
+
+        /* Logout Button */
+        .logout-btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            /* background: #ff4d4d; */
+            background: linear-gradient(to right, crimson, blue);
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: linear-gradient(to right, crimson, blue);
+        }
+
+
+
+        .bs-section {
+            background: #ffffff;
+            display: grid;
+            place-items: center;
+        }
+
+        .bs-heading {
+            color: #003366;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.5em;
+            padding: 20px;
+            margin: 20px 0px;
+        }
+
+        .main-slider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 80%;
+            overflow: hidden;
+            background: rgb(255, 255, 255);
+            border-radius: 16px;
+            /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+            backdrop-filter: blur(7.4px);
+            -webkit-backdrop-filter: blur(7.4px);
+            /* border: 1px solid rgb(255, 255, 255); */
+        }
+
+        .main-slider-items {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            animation: scrolling 20s linear infinite;
+
+        }
+
+        @keyframes scrolling {
+
+            0% {
+                transform: translateX(80%);
+            }
+
+            100% {
+                transform: translateX(-20%);
+            }
+        }
+
+        .main-slider-items img {
+            width: 12%;
+            margin: 20px;
+
+        }
+
+        /*** Footer ***/
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer-section {
+            background: #003366;
+            position: relative;
+        }
+
+        .footer-cta {
+            border-bottom: 1px solid #007bff;
+        }
+
+        .single-cta i {
+            color: #ff5e14;
+            font-size: 30px;
+            float: left;
+            margin-top: 8px;
+        }
+
+        .cta-text {
+            padding-left: 15px;
+            display: inline-block;
+        }
+
+        @media screen and (max-width: 768px) {
+            .cta-text {
+                margin: 1em;
+            }
+        }
+
+        .cta-text h4 {
+            color: #ffffff;
+            font-size: 1em;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .cta-text span {
+            color: #F4F7FE;
+            font-size: 0.9em;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-pattern img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 330px;
+            background-size: cover;
+            background-position: 100% 100%;
+        }
+
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            max-width: 200px;
+        }
+
+        .footer-text p {
+            margin-bottom: 14px;
+            font-size: 14px;
+            color: #d7d7d7;
+            line-height: 28px;
+        }
+
+        .footer-social-icon span {
+            color: #fff;
+            display: block;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .footer-social-icon a {
+            color: #fff;
+            font-size: 16px;
+            margin-right: 15px;
+        }
+
+        .footer-social-icon i {
+            height: 50px;
+            width: 50px;
+            padding: 5px 2px;
+            text-align: center;
+            line-height: 38px;
+            border-radius: 50%;
+        }
+
+        .facebook-bg {
+            background: #3B5998;
+        }
+
+        .twitter-bg {
+            background: #55ACEE;
+        }
+
+        .google-bg {
+            background: #DD4B39;
+        }
+
+        .footer-widget-heading h3 {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .footer-widget-heading h3::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -15px;
+            height: 2px;
+            width: 50px;
+            background: #3294FE;
+        }
+
+        .footer-widget ul li {
+            display: inline-block;
+            float: left;
+            width: 50%;
+            margin-bottom: 12px;
+        }
+
+        .footer-widget .ighcs-services-link li {
+            display: inline-block;
+            /* float: left; */
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        .footer-widget ul li a:hover {
+            color: #68acf4;
+        }
+
+        .footer-widget ul li a {
+            text-decoration: none;
+            color: #d7d7d7;
+            font-size: 0.75em;
+            text-transform: capitalize;
+        }
+
+        @media screen and (max-width: 768px) {
+            .footer-widget-two {
+                margin-top: 2em;
+            }
+        }
+
+        .copyright-area {
+            background: #003366;
+            padding: 25px 0;
+        }
+
+        .copyright-text p {
+            margin: 0;
+            font-size: 14px;
+            color: #d7d7d7;
+        }
+
+        .copyright-text p a {
+            color: #62a9f5;
+        }
+
+        .footer-menu li {
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        .footer-menu li:hover a {
+            color: #3294FE;
+        }
+
+        .footer-menu li a {
+            font-size: 14px;
+            color: #d7d7d7;
+        }
+
+
+
+
+
+
+        .section-title {
+            font-family: 'Lobster', cursive;
+            color: #0059ff;
+            font-size: 36px;
+            font-weight: normal;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #6c757d;
+            margin-bottom: 60px;
+        }
+
+        .strategy-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
+        }
+
+        .strategy-box {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 48%;
+            transition: transform 0.3s ease;
+        }
+
+        .strategy-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .strategy-box h3 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #004e92;
+            margin-bottom: 20px;
+        }
+
+        .strategy-box ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .strategy-box ul li {
+            font-size: 1em;
+            margin-bottom: 15px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .strategy-box ul li::before {
+            content: "◆";
+            color: #0071f3;
+            margin-right: 10px;
+        }
+
+        .strategy-box .highlight {
+            color: #004e92;
+            font-weight: 600;
+        }
+
+        .full-width-box {
+            background: #004e92;
+            color: #ffffff;
+            border-radius: 10px;
+            padding: 40px;
+            margin-top: 50px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .full-width-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .full-width-box ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .full-width-box ul li {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .full-width-box ul li::before {
+            content: "◆";
+            color: #ffffff;
+            margin-right: 10px;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 1024px) {
+            .strategy-box {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .strategy-box h3 {
+                font-size: 1.5rem;
+            }
+
+            .strategy-box ul li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header" id="header">
+        <nav>
+            <div class="navbar">
+                <a href="#" class="logo">
+                    <img src="/assets/image/Blue_and_White_Modern_Company_Logo-removebg-preview.png" alt="Logo" />
+                </a>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <ul class="menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#bspartner">Business Partners</a></li>
+                    <li class="service-dropdown">
+                        <span class="dropdown-toggle">Services</span>
+                        <ul class="service-dropdown-menu">
+                            <li><a href="programmedirector.html">Programme Director &amp; Facilitation of Strategic
+                                    Workshops</a></li>
+                            <!-- <li><a href="facilitationofstrategicworkshops.html">Facilitation of Strategic Workshops</a>
+                            </li> -->
+                            <li><a href="strategiconference.html">Strategic Conferences</a></li>
+                            <li><a href="humancapitalstrategies.html">Human Capital Strategies and Implementation</a>
+                            </li>
+                            <li><a href="business-process-reengineering.html">Business Process Re-engineering</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <span class="dropdown-toggle">Conferences</span>
+                        <ul class="dropdown-menu">
+                            <li><a href="calendar.html">Conference Calendar</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <div class="auth-section" id="auth-section">
+                        <button onclick="window.location.href='login.html'">Login</button>
+                        <button onclick="window.location.href='register.html'">Register</button>
+                    </div>
+                    <!-- <div id="user-info" class="user-container"> -->
+                    <div class="user-menu" id="user-menu">
+                        <i class="fas fa-user-circle user-icon" onclick="toggleDropdown()"></i>
+                        <div class="dropdown" id="dropdown-menu">
+                            <div class="dropdown-header">
+                                <p id="username-display"></p>
+                            </div>
+                            <button onclick="logout()" class="logout-btn">Logout</button>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </ul>
+            </div>
+
+            <div class="mobile-menu" id="mobileMenu">
+                <span class="close-btn" onclick="toggleMenu()">&times;</span>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#bspartner">Business Partners</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li class="service-dropdown">
+                        <span class="dropdown-toggle">Services</span>
+                        <ul class="service-dropdown-menu">
+                            <li><a href="programmedirector.html">Programme Director &amp; Facilitation of Strategic
+                                    Workshops</a></li>
+                            <!-- <li><a href="facilitationofstrategicworkshops.html">Facilitation of Strategic Workshops</a>
+                            </li> -->
+                            <li><a href="strategiconference.html">Strategic Conferences</a></li>
+                            <li><a href="humancapitalstrategies.html">Human Capital Strategies and Implementation</a>
+                            </li>
+                            <li><a href="business-process-reengineering.html">Business Process Re-engineering</a></li>
+                        </ul>
+                    </li>
+                    <li class="service-dropdown">
+                        <span class="dropdown-toggle">Conferences</span>
+                        <ul class="service-dropdown-menu">
+                            <li><a href="calendar.html">Conference Calendar</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="about-us">
+        <div class="container">
+            <div class="row align-items-center">
+
+
+                <!-- Text Column -->
+                <div class="col-lg-6 col-md-12">
+                    <div class="text">
+                        <h2><span style="color: #0059ff;">IGHCS</span> Services</h2>
+                        <h5>Human Capital Strategies and Implementation</h5>
+                        <p>The Human Capital Strategies and Implementation service aims to align key human capital
+                            strategies with organizational goals to drive growth, innovation, and competitiveness. It
+                            focuses on enhancing the employee experience by fostering inclusive, engaging, and
+                            supportive work environments, while also developing a future-ready workforce through
+                            continuous upskilling and reskilling. Diversity, equity, and inclusion are also central,
+                            ensuring equal opportunities for all employees.</p>
+                        <p>Key drivers of this service include adapting to changing workforce demographics, embracing
+                            rapid technological advancements, and competing in a talent-driven market. Organizations are
+                            encouraged to build agile, flexible human capital strategies to address the evolving nature
+                            of work, such as remote and hybrid models, and meet shifting employee expectations.</p>
+                        <p>
+                            Investing in human capital leads to significant benefits, including improved business
+                            performance, enhanced employee engagement, and increased adaptability to market changes.
+                            Organizations can make better strategic decisions using data and analytics, while also
+                            improving their reputation and brand by demonstrating a commitment to employee well-being
+                            and diversity. Additionally, optimizing business processes helps reduce costs and boost
+                            overall productivity
+                        </p>
+                        <div class="data">
+                            <a href="#human-capital-strategies" class="btn btn-primary hire">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Image Column -->
+                <div class="col-lg-6 col-md-12">
+                    <img src="/assets/image/service-three.jpeg" class="img-fluid pic" alt="Conference Image" />
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <section id="human-capital-strategies" class="container">
+        <h2 class="section-title">Human Capital Strategies and Implementation</h2>
+        <p class="section-subtitle">
+            IGHCS aims to implement innovative human capital strategies to drive growth, enhance employee experience,
+            and build a future-ready workforce for 2025 and beyond.
+        </p>
+
+        <div class="strategy-content">
+
+            <!-- Strategic Objectives -->
+            <div class="strategy-box">
+                <h3>Strategic Objectives and Focus Areas</h3>
+                <ul>
+                    <li><strong class="highlight">Drive Business Growth:</strong> Align key strategies to enhance
+                        growth, innovation, and competitiveness.</li>
+                    <li><strong class="highlight">Enhance Employee Experience:</strong> Build inclusive, supportive
+                        environments for better well-being and retention.</li>
+                    <li><strong class="highlight">Develop Future-Ready Workforce:</strong> Equip employees with
+                        upskilling and reskilling to thrive in a changing world.</li>
+                    <li><strong class="highlight">Foster Diversity, Equity, and Inclusion:</strong> Cultivate a culture
+                        of inclusivity and respect for all.</li>
+                    <li><strong class="highlight">Leverage Technology and Data:</strong> Use technology and analytics to
+                        make informed decisions and enhance efficiency.</li>
+                </ul>
+            </div>
+
+            <!-- Key Drivers -->
+            <div class="strategy-box">
+                <h3>Key Drivers</h3>
+                <ul>
+                    <li><strong class="highlight">Changing Workforce Demographics:</strong> Adapt strategies for
+                        evolving demographics and succession planning.</li>
+                    <li><strong class="highlight">Technological Advancements:</strong> Stay ahead with AI, automation,
+                        and continuous skill development.</li>
+                    <li><strong class="highlight">Increasing Competition for Talent:</strong> Implement innovative
+                        recruitment strategies to attract and retain top talent.</li>
+                    <li><strong class="highlight">Focus on Diversity & Inclusion:</strong> Build cultures of inclusivity
+                        and equality.</li>
+                    <li><strong class="highlight">Evolving Nature of Work:</strong> Adapt to remote work, hybrid models,
+                        and changing employee expectations.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Expected Benefits -->
+        <div class="full-width-box">
+            <h3>Expected Benefits from Investing in Human Capital</h3>
+            <ul>
+                <li><strong class="highlight">Improved Business Performance:</strong> Aligning strategies to boost
+                    growth, innovation, and competitiveness.</li>
+                <li><strong class="highlight">Enhanced Engagement & Retention:</strong> Positive environments improve
+                    employee satisfaction and loyalty.</li>
+                <li><strong class="highlight">Increased Agility & Adaptability:</strong> A future-ready workforce can
+                    respond effectively to market changes.</li>
+                <li><strong class="highlight">Better Decision-Making:</strong> Data-driven insights optimize resource
+                    allocation and reduce risks.</li>
+                <li><strong class="highlight">Improved Brand Reputation:</strong> Commitment to inclusion and employee
+                    well-being enhances brand attraction.</li>
+                <li><strong class="highlight">Business Process Optimization:</strong> Streamline operations and cut
+                    costs through better processes.</li>
+            </ul>
+        </div>
+
+    </section>
+
+
+
+
+
+    <!-- Business Partners Section -->
+    <section class="container-fluid bs-section py-5" id="bspartner">
+        <div class="col-md-6">
+            <h1 class="bs-heading">Our Business Partners</h1>
+        </div>
+        <div class="main-slider">
+            <div class="main-slider-items">
+                <img src="ukzn_orig (1).png" alt="">
+                <img src="/assets/image/Unisa-Logo.png" alt="">
+                <img src="/assets/image/designx.png" alt="">
+                <img src="/assets/image/varsity_logo.png" alt="">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/37/Jumpman_logo.svg/1200px-Jumpman_logo.svg.png"
+                    alt="">
+                <img src="https://www.svgrepo.com/show/303123/bmw-logo.svg" alt="">
+                <img src="https://brandlogos.net/wp-content/uploads/2014/12/starbucks_coffee_company-logo_brandlogos.net_9jqys.png"
+                    alt="">
+                <img src="https://www.zarla.com/images/nike-logo-2400x2400-20220504.png?crop=1:1,smart&width=150&dpr=2"
+                    alt="">
+                <img src="https://www.zarla.com/images/apple-logo-2400x2400-20220512-1.png?crop=1:1,smart&width=150&dpr=2"
+                    alt="">
+                <img src="https://www.zarla.com/images/disney-logo-2400x2400-20220513-2.png?crop=1:1,smart&width=150&dpr=2"
+                    alt="">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4d/Loon_%28company%29_logo.svg/800px-Loon_%28company%29_logo.svg.png"
+                    alt="">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/37/Jumpman_logo.svg/1200px-Jumpman_logo.svg.png"
+                    alt="">
+                <img src="https://www.svgrepo.com/show/303123/bmw-logo.svg" alt="">
+                <img src="https://brandlogos.net/wp-content/uploads/2014/12/starbucks_coffee_company-logo_brandlogos.net_9jqys.png"
+                    alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- End of Business Partners Section -->
+
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-cta pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <div class="cta-text">
+                                <h4>Find us</h4>
+                                <span>27 Croton Street, Unit 9 Croton Crest, Brindhaven, Verulam, 4339</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <div class="cta-text">
+                                <h4>Call us</h4>
+                                <span>Juggie Moodley: +27 84 956 2500</span> <br>
+                                <!-- <span>Natasha Dadoo: +27 74 028 6936</span> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <div class="cta-text">
+                                <h4>Mail us</h4>
+                                <span>ighcs@yahoo.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <a href="index.html"><img src="/assets/image/IGHCS_LOGO_2-removebg-Transparent.png"
+                                        class="img-fluid" alt="logo"></a>
+                            </div>
+                            <div class="footer-text">
+                                <p>"We Deliver actionable,
+                                    objective insight to executives and their teams".</p>
+                            </div>
+                            <div class="footer-social-icon">
+                                <span>Follow us</span>
+                                <a href="#"><i class="fa-brands fa-facebook facebook-bg"></i></a>
+                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Links</h3>
+                            </div>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Our Services</a></li>
+                                <li><a href="#">Conference Calendar</a></li>
+                                <li><a href="#">Expert Team</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                        <div class="footer-widget footer-widget-two">
+                            <div class="footer-widget-heading">
+                                <h3>IGHCS Services</h3>
+                            </div>
+                            <ul class="ighcs-services-link">
+                                <li><a href="#">Programme Director and Facilitation of Strategic Workshops</a></li>
+                                <li><a href="#">Strategic Conferences</a></li>
+                                <li><a href="#">Crafting of Human Capital Strategies and Implementation</a></li>
+                                <li><a href="#">Re-engineering Business Processes aligned to business needs</a></li>
+                                <li><a href="#">Change Management Services</a></li>
+                                <li><a href="#">Coaching and Mentoring</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                        <div class="copyright-text">
+                            <p>Copyright &copy; IGHCS 2025, All Right
+                                Reserved. Developed By<a href="https://www.rahuldawpersad.com" target="_blank">
+                                    DesignX</a></p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                        <div class="footer-menu">
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Terms</a></li>
+                                <li><a href="#">Privacy</a></li>
+                                <li><a href="#">Policy</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--End Of Footer -->
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Load user session and show correct UI
+        window.onload = function () {
+            const user = sessionStorage.getItem('username');
+            if (user) {
+                document.getElementById('auth-section').style.display = "none"; // Hide Login/Register
+                document.getElementById('user-menu').style.display = "block"; // Show User Icon
+                document.getElementById('username-display').innerHTML = `<i class="fa-solid fa-user"></i> ${user}`;
+            } else {
+                document.getElementById('auth-section').style.display = "flex"; // Show Login/Register
+                document.getElementById('user-menu').style.display = "none"; // Hide User Icon
+            }
+        }
+
+        function toggleDropdown() {
+            document.getElementById("dropdown-menu").classList.toggle("show");
+        }
+
+        // Close menu on window resize if menu is open
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('open');
+        }
+
+
+        function logout() {
+            sessionStorage.removeItem('username');
+            window.location.href = 'index.html';
+        }
+
+        // Close dropdown when clicking outside
+        window.onclick = function (event) {
+            if (!event.target.matches('.user-icon')) {
+                let dropdown = document.getElementById("dropdown-menu");
+                if (dropdown.classList.contains("show")) {
+                    dropdown.classList.remove("show");
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -131,6 +131,18 @@ app.get('/services', (req, res) => {
     res.sendFile(__dirname + '/public/services.html');
 });
 
+app.get('/programmedirector', (req, res) => {
+    res.sendFile(__dirname + '/public/programmedirector.html')
+})
+
+app.get('/strategiconference', (req, res) => {
+    res.sendFile(__dirname + '/public/strategiconference.html')
+})
+
+app.get('/humancapitalstrategies', (req, res) => {
+    res.sendFile(__dirname + '/public/humancapitalstrategies.html')
+})
+
 
 
 // Error handling middleware
