@@ -23,6 +23,18 @@ const LIST_ID = process.env.LIST_ID;
 const WELCOME_TEMPLATE_ID = process.env.WELCOME_TEMPLATE_ID;
 
 // PostgreSQL Connection
+// const pool = new Pool({
+//     host: process.env.DB_HOST,
+//     port: process.env.DB_PORT,
+//     database: process.env.DB_NAME,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD,
+//     ssl: { rejectUnauthorized: false },
+//     connectionTimeoutMillis: 30000, // 30 seconds
+//     idleTimeoutMillis: 30000, // 30 seconds
+//     max: 10, // Limit the number of connections
+// });
+
 const pool = new Pool({
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
@@ -31,20 +43,7 @@ const pool = new Pool({
     password: process.env.DB_PASSWORD,
     ssl: { rejectUnauthorized: false }
 });
-// const db = mysql.createPool({
-//     connectionLimit: 10, // Set the connection limit as needed
-//     host: process.env.DB_HOST,
-//     user: process.env.DB_USER,
-//     password: process.env.DB_PASS,
-//     database: process.env.DB_NAME
-// });
 
-// Test the connection
-// db.getConnection((err, connection) => {
-//     if (err) throw err;
-//     console.log('Connected to Clever Cloud MySQL');
-//     connection.release(); // Always release the connection after using it
-// });
 
 // Serve the landing page (index.html)
 app.get("/", (req, res) => {
@@ -116,7 +115,7 @@ app.post("/subscribe", async (req, res) => {
         res.json({ message: "Subscription successful! Check your email." });
     } catch (error) {
         console.error("Error subscribing user:", error.response?.data || error.message);
-        res.status(400).json({ message: "Subscription failed. Try again!" });
+        res.status(400).json({ message: "Unable to create contact, email is already associated with another Contact"});
     }
 });
 
