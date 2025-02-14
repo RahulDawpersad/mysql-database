@@ -8,7 +8,7 @@ const axios = require("axios");
 const { Pool } = require('pg');
 
 const app = express();
-const port = process.env.PORT || 3000; // Use .env PORT or fallback to 3000
+const port = process.env.PORT || 3001; // Use .env PORT or fallback to 3000
 app.use(cors());
 
 // Middleware
